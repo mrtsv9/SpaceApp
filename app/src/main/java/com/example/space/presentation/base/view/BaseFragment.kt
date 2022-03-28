@@ -13,9 +13,11 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import moxy.MvpFragment
+import moxy.MvpView
 
 @Suppress("PropertyName", "UNCHECKED_CAST")
-abstract class BaseFragment<VB : ViewBinding> : Fragment(), MVPView {
+abstract class BaseFragment<VB : ViewBinding> : MvpFragment() {
 
     private var hostActivity: Activity? = null
     private var _binding: ViewBinding? = null

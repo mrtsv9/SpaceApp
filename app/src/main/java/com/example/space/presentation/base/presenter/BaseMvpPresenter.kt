@@ -1,8 +1,8 @@
 package com.example.space.presentation.base.presenter
 
-import com.example.space.presentation.base.view.MVPView
+import com.example.space.presentation.base.view.BaseMvpView
 
-interface MVPPresenter<V : MVPView> {
+interface BaseMvpPresenter<V : BaseMvpView> {
 
     fun onAttach(view: V?)
 
