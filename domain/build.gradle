@@ -1,0 +1,20 @@
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+}
+
+dependencies {
+
+    // Retrofit And other
+    implementation "com.squareup.retrofit2:retrofit:2.9.0" //Retrofit для REST API
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
+    //Для ретрофита, чтобы преобразовывать Json -> Объект
+    implementation "com.google.code.gson:gson:2.8.7" //чтобы преобразовывать Json -> Объект
+    implementation "com.squareup.okhttp3:logging-interceptor:3.14.1" //для логов в ретрофите
+    
+}

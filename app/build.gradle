@@ -41,6 +41,8 @@ android {
 
 dependencies {
 
+    implementation project(path: ':domain')
+
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
@@ -92,6 +94,7 @@ dependencies {
     // Moxy For MVP
     def moxy_version = "2.2.2"
     implementation "com.github.moxy-community:moxy:$moxy_version"
+    implementation "com.github.moxy-community:moxy-ktx:$moxy_version"
     implementation "com.github.moxy-community:moxy-android:$moxy_version"
     implementation "com.github.moxy-community:moxy-app-compat:$moxy_version"
     implementation "com.github.moxy-community:moxy-androidx:$moxy_version"

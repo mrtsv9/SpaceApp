@@ -1,4 +1,4 @@
-package com.example.space.presentation.main_screen.interactor
+package com.example.domain.dto
 
 import com.google.gson.annotations.SerializedName
 
