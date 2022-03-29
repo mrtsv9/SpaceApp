@@ -14,9 +14,11 @@ import com.example.space.MainActivity
 import com.example.space.R
 import com.example.space.databinding.ActivitySplashBinding
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 
 @SuppressLint("CustomSplashScreen")
 @Suppress("DEPRECATION")
+@AndroidEntryPoint
 class SplashScreenActivity : AppCompatActivity() {
 
     private var binding: ActivitySplashBinding? = null

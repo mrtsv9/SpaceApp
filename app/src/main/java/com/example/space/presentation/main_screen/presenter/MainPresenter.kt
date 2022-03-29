@@ -1,8 +1,10 @@
-package com.example.space.presentation.main_screen.interactor
+package com.example.space.presentation.main_screen.presenter
 
-import com.example.space.presentation.main_screen.repository.MainInteractor
+import com.example.space.presentation.main_screen.interactor.MainInteractor
 import com.example.space.presentation.main_screen.view.MainView
+import kotlinx.coroutines.runBlocking
 import moxy.MvpPresenter
+import moxy.presenterScope
 
 class MainPresenter(
     private val mvpView: MainView,
@@ -11,10 +13,11 @@ class MainPresenter(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        
+        fetchRoverData()
+        val q = 3
     }
 
-    fun fetchRoverData() {
+    fun fetchRoverData() = runBlocking {
         val response = interactor.fetchRoverData()
         response?.let { viewState.displayData(it) }
     }
