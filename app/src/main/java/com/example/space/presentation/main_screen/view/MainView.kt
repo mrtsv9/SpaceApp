@@ -7,6 +7,6 @@ import moxy.viewstate.strategy.alias.AddToEndSingle
 interface MainView: BaseMvpView {
 
     @AddToEndSingle
-    fun displayData(data: List<RoverDataResponse>)
+    fun displayData(data: RoverDataResponse)
 
 }

@@ -7,6 +7,6 @@ import retrofit2.http.GET
 interface ApiService {
 
     @GET("rovers/curiosity/photos?sol=1000&api_key=duSrXQJcfbwbadQgkXtlebLhZCZcgkdYh3lzoI5L")
-    fun getRoverData(): Response<List<RoverDataResponse>>
+    suspend fun getRoverData(): Response<RoverDataResponse>
 
 }

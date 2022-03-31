@@ -7,6 +7,7 @@ import com.example.space.databinding.FragmentMainBinding
 import com.example.space.presentation.base.view.BaseFragment
 import com.example.space.presentation.main_screen.presenter.MainPresenter
 import com.example.space.presentation.main_screen.interactor.MainInteractor
+import dagger.hilt.android.AndroidEntryPoint
 import moxy.ktx.moxyPresenter
 import javax.inject.Inject
 
@@ -20,10 +21,10 @@ class MainFragment: BaseFragment<FragmentMainBinding>(), MainView  {
     private val presenter by moxyPresenter { MainPresenter(this, interactor) }
 
     override fun setup() {
-        presenter.fetchRoverData()
+
     }
 
-    override fun displayData(data: List<RoverDataResponse>) {
+    override fun displayData(data: RoverDataResponse) {
 
     }
 

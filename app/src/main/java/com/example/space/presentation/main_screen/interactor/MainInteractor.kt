@@ -1,5 +1,7 @@
 package com.example.space.presentation.main_screen.interactor
 
+import android.util.Log
+import com.example.domain.dto.Rover
 import com.example.domain.dto.RoverDataResponse
 import com.example.domain.service.ApiService
 import com.example.space.presentation.base.repository.BaseInteractor
@@ -10,7 +12,7 @@ class MainInteractor @Inject constructor(
     private val apiService: ApiService
 ): BaseInteractor {
 
-    fun fetchRoverData(): List<RoverDataResponse>? = runBlocking {
+    fun fetchRoverData(): RoverDataResponse? = runBlocking{
         return@runBlocking apiService.getRoverData().body()
     }
 

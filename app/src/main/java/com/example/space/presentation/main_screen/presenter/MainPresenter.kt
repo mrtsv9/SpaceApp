@@ -1,5 +1,6 @@
 package com.example.space.presentation.main_screen.presenter
 
+import android.util.Log
 import com.example.space.presentation.main_screen.interactor.MainInteractor
 import com.example.space.presentation.main_screen.view.MainView
 import kotlinx.coroutines.runBlocking
@@ -14,12 +15,12 @@ class MainPresenter(
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         fetchRoverData()
-        val q = 3
+//        val q = 3
     }
 
-    fun fetchRoverData() = runBlocking {
-        val response = interactor.fetchRoverData()
-        response?.let { viewState.displayData(it) }
+    private fun fetchRoverData() = runBlocking {
+        Log.d("KEK", interactor.fetchRoverData().toString())
+//        response?.let { viewState.displayData(it) }
     }
 
 }

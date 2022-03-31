@@ -6,14 +6,14 @@ data class RoverDataResponse(
     val photos: List<Photos>
 )
 
-data class Photos (
+data class Photos(
     val camera: Camera,
     @SerializedName("img_src")
     val img: String,
     val rover: Rover
 )
 
-data class Camera (
+data class Camera(
     @SerializedName("full_name")
     val fullName: String
 )
