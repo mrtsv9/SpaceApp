@@ -54,11 +54,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     // Navigation
-    def nav_version = "2.4.1"
-    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-    // Feature module Support
-    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+    implementation "com.github.terrakok:cicerone:7.1"
 
     // Retrofit And other
     implementation "com.squareup.retrofit2:retrofit:2.9.0" //Retrofit для REST API
