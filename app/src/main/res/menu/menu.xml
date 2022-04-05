@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mi_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/mi_map"
+        android:enabled="true"
+        android:icon="@drawable/ic_map"
+        android:title="@string/map" />
+
+</menu>

@@ -15,11 +15,11 @@
         android:theme="@style/Theme.Space">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.MainActivity"
             android:exported="true" />
 
         <activity
-            android:name=".presentation.splash_screen.SplashScreenActivity"
+            android:name=".presentation.splash_screen.view.SplashScreenActivity"
             android:exported="true"
             android:noHistory="true">
             <intent-filter>

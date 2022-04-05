@@ -1,27 +1,40 @@
-package com.example.space.presentation.splash_screen
+package com.example.space.presentation.splash_screen.view
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
-import com.example.space.MainActivity
-import com.example.space.R
 import com.example.space.databinding.ActivitySplashBinding
+import com.example.space.presentation.navigation.Screens
+import com.example.space.presentation.splash_screen.presenter.SplashPresenter
+import com.github.terrakok.cicerone.*
+import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import moxy.MvpAppCompatActivity
+import moxy.ktx.moxyPresenter
+import javax.inject.Inject
 
 @SuppressLint("CustomSplashScreen")
 @Suppress("DEPRECATION")
 @AndroidEntryPoint
-class SplashScreenActivity : AppCompatActivity() {
+class SplashScreenActivity : MvpAppCompatActivity(), SplashView {
 
     private var binding: ActivitySplashBinding? = null
+
+    @Inject
+    lateinit var router: Router
+
+    @Inject
+    lateinit var navigatorHolder: NavigatorHolder
+
+    private val navigator: Navigator = AppNavigator(this, -1)
+
+    private val presenter by moxyPresenter { SplashPresenter(router) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,11 +53,25 @@ class SplashScreenActivity : AppCompatActivity() {
                     Snackbar.LENGTH_LONG
                 ).show()
             } else {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+//                val intent = Intent(this, MainActivity::class.java)
+//                startActivity(intent)
+//                navigatorHolder.setNavigator(navigator)
+//                presenter.openMainActivity()
+                navigator.applyCommands(arrayOf(Replace(Screens.openMainActivity())))
+//                router.replaceScreen(Screens.openMainActivity())
             }
-        }, 2000)
+        }, 1000)
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        navigatorHolder.setNavigator(navigator)
+    }
+
+    override fun onPause() {
+        navigatorHolder.removeNavigator()
+        super.onPause()
     }
 
     private fun checkForInternet(context: Context): Boolean {
