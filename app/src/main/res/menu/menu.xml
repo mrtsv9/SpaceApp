@@ -5,11 +5,11 @@
     <item
         android:id="@+id/mi_home"
         android:icon="@drawable/ic_home"
-        tools:ignore="MenuTitle" />
+        android:title="@string/home" />
 
     <item
         android:id="@+id/mi_map"
         android:icon="@drawable/ic_map"
-        tools:ignore="MenuTitle" />
+        android:title="@string/map" />
 
 </menu>
