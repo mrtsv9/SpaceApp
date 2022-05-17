@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.domain.RetrofitInstance
 import com.example.domain.dto.RoverDataResponse
 import com.example.domain.service.ApiService
+import com.example.space.R
 import com.example.space.databinding.ActivityMainBinding
 import com.example.space.presentation.main_screen.interactor.MainInteractor
 import com.example.space.presentation.main_screen.presenter.MainPresenter
@@ -32,22 +33,22 @@ import javax.inject.Inject
 
 @Suppress("DEPRECATION")
 @AndroidEntryPoint
-class MainActivity : MvpAppCompatActivity(), MainView {
+class MainActivity : MvpAppCompatActivity() {
 
     private var binding: ActivityMainBinding? = null
 
-    @Inject
-    lateinit var interactor: MainInteractor
-
-    @Inject
-    lateinit var router: Router
+//    @Inject
+//    lateinit var interactor: MainInteractor
+//
+//    @Inject
+//    lateinit var router: Router
 
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
 
     private var navigator: AppNavigator? = null
 
-    private val presenter by moxyPresenter { MainPresenter(this, interactor, router) }
+//    private val presenter by moxyPresenter { MainPresenter(this, interactor) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,15 +60,23 @@ class MainActivity : MvpAppCompatActivity(), MainView {
             navigator?.applyCommands(arrayOf(Replace(Screens.openMainFragment())))
         }, 2000)
 
-//        supportFragmentManager.beginTransaction()
-//            .add(binding?.container?.id!!, MainFragment())
-//            .commit()
-//        Log.d("KEK", apiService.getRoverData().toString())
-//        val test = RetrofitInstance.getRetrofitInstance().create(ApiService::class.java)
-//        lifecycleScope.launch {
-//            Log.d("KEK", test.getRoverData().body().toString())
-//        }
+        bottomNavigation()
 
+    }
+
+    private fun bottomNavigation() {
+        binding?.bottomNav?.setOnItemSelectedListener { item ->
+
+            when (item.itemId) {
+                R.id.mi_home -> {
+                    navigator?.applyCommands(arrayOf(Replace(Screens.openMainFragment())))
+                }
+                R.id.mi_map -> {
+                    navigator?.applyCommands(arrayOf(Replace(Screens.openMapFragment())))
+                }
+            }
+            true
+        }
     }
 
     override fun onResume() {
@@ -79,10 +88,5 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         navigatorHolder.removeNavigator()
         super.onPause()
     }
-
-    override fun displayData(data: RoverDataResponse) {
-
-    }
-
 
 }

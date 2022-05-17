@@ -15,17 +15,12 @@ import javax.inject.Inject
 class MainPresenter(
     private val mvpView: MainView,
     private val interactor: MainInteractor,
-    private val router: Router
+//    private val router: Router
 ): MvpPresenter<MainView>() {
 
-    override fun onFirstViewAttach() {
-        super.onFirstViewAttach()
-//        fetchRoverData()
-        router.newRootScreen(Screens.openMainFragment())
-    }
-
-    private fun fetchRoverData() = runBlocking {
-//        Log.d("KEK", interactor.fetchRoverData().toString())
+    fun fetchRoverData() = runBlocking {
+        val data = interactor.fetchRoverData()
+        data?.let { mvpView.displayData(it) }
     }
 
 }

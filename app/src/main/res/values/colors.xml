@@ -7,4 +7,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="btn_show_image">#C00F9E</color>
+    <color name="rv_background">#1D1E1F</color>
 </resources>

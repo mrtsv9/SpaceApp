@@ -9,7 +9,7 @@ data class RoverDataResponse(
 data class Photos(
     val camera: Camera,
     @SerializedName("img_src")
-    val img: String,
+    val imgLink: String,
     val rover: Rover
 )
 
