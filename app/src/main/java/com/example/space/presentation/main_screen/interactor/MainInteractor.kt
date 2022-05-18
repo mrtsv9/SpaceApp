@@ -12,8 +12,8 @@ class MainInteractor @Inject constructor(
     private val apiService: ApiService
 ): BaseInteractor {
 
-    fun fetchRoverData(): RoverDataResponse? = runBlocking{
-        return@runBlocking apiService.getRoverData().body()
+    suspend fun fetchRoverData(): RoverDataResponse? {
+        return apiService.getRoverData().body()
     }
 
 }

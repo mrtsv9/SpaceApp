@@ -15,6 +15,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
     //Для ретрофита, чтобы преобразовывать Json -> Объект
     implementation "com.google.code.gson:gson:2.8.7" //чтобы преобразовывать Json -> Объект
-    implementation "com.squareup.okhttp3:logging-interceptor:3.14.1" //для логов в ретрофите
-    
+    implementation "com.squareup.okhttp3:logging-interceptor:3.14.1"
+
 }

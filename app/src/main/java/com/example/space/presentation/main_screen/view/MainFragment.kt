@@ -26,9 +26,6 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), MainView {
 
     @Inject
     lateinit var interactor: MainInteractor
-//
-//    @Inject
-//    lateinit var router: Router
 
     private val presenter by moxyPresenter { MainPresenter(this, interactor) }
 
@@ -51,21 +48,10 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), MainView {
 
     }
 
-    override fun displayData(data: RoverDataResponse) {
-        val listItems = emptyList<RoverDataItem>().toMutableList()
+    override fun displayData(data: List<RoverDataItem>) {
 
-        data.photos.forEach {
-            listItems.add(RoverDataItem(it.imgLink, it.camera.fullName, it.rover.name))
-        }
-        Log.d("KEK", listItems.toString())
-
-        val adapter = RoverDataAdapter(listItems)
+        val adapter = RoverDataAdapter(data)
         binding.rvPhotos.layoutManager = GridLayoutManager(context, 2)
-        binding.rvPhotos.setHasFixedSize(true)
-//        binding.rvPhotos.layoutManager = LinearLayoutManager(
-//            binding.root.context,
-//            LinearLayoutManager.VERTICAL, false
-//        )
         binding.rvPhotos.adapter = adapter
     }
 
