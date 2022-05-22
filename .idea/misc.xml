@@ -3,7 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/bg.xml" value="0.285" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/round_outline.xml" value="0.285" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout-land/item_image.xml" value="0.403125" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout-v31/item_image.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout/activity_splash.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout/fragment_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout/fragment_map.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout/item_image.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/MartsevPC/AndroidStudioProjects/SpaceApp/app/src/main/res/drawable/bg.xml" value="0.2385" />
         <entry key="..\:/Users/MartsevPC/AndroidStudioProjects/SpaceApp/app/src/main/res/drawable/corners.xml" value="0.2385" />
         <entry key="..\:/Users/MartsevPC/AndroidStudioProjects/SpaceApp/app/src/main/res/drawable/ic_ellipse.xml" value="0.2385" />

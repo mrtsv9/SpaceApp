@@ -31,6 +31,8 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), MainView {
 
     override fun setup() {
 
+        presenter.fetchRoverData()
+
         val backCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 Snackbar.make(
@@ -44,12 +46,9 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), MainView {
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backCallback)
 
-        presenter.fetchRoverData()
-
     }
 
     override fun displayData(data: List<RoverDataItem>) {
-
         val adapter = RoverDataAdapter(data)
         binding.rvPhotos.layoutManager = GridLayoutManager(context, 2)
         binding.rvPhotos.adapter = adapter

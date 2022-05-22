@@ -13,6 +13,6 @@ import retrofit2.Retrofit
 import javax.inject.Singleton
 
 @HiltAndroidApp
-class MyApp: Application() {
+class HiltApp: Application() {
 
 }

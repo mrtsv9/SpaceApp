@@ -15,8 +15,4 @@ class SplashPresenter(private val router: Router): MvpPresenter<SplashView>() {
         router.navigateTo(Screens.openMainActivity())
     }
 
-    fun openMainActivity() {
-        router.navigateTo(Screens.openMainActivity())
-    }
-
 }

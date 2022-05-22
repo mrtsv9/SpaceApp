@@ -105,13 +105,4 @@ dependencies {
     implementation "com.github.moxy-community:moxy-material:$moxy_version"
     implementation "com.github.moxy-community:moxy-ktx:$moxy_version"
 
-//    def moxy_version = "2.2.2"
-//    implementation "com.github.moxy-community:moxy-ktx:$moxy_version"
-//    implementation "com.github.moxy-community:moxy:$moxy_version"
-//    implementation "com.github.moxy-community:moxy-android:$moxy_version"
-//    implementation "com.github.moxy-community:moxy-app-compat:2.2.2"
-//    implementation "com.github.moxy-community:moxy-androidx:$moxy_version"
-//    kapt "com.github.moxy-community:moxy-compiler:$moxy_version"
-
-
 }

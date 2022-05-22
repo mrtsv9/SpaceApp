@@ -9,14 +9,6 @@ data class RoverDataItem(
 )
 
 fun RoverDataResponse.toRoverDataItems(): List<RoverDataItem> {
-
-//    val itemsList: MutableList<RoverDataItem> = emptyList<RoverDataItem>().toMutableList()
-//
-//    photos.forEach {
-//        itemsList.add(RoverDataItem(imgLink = it.imgLink,
-//            cameraName = it.camera.fullName,
-//            roverName = it.rover.name))
-//    }
     return photos.map {
         RoverDataItem(imgLink = it.imgLink,
             cameraName = it.camera.fullName,

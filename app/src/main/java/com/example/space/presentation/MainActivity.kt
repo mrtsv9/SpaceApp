@@ -19,18 +19,10 @@ class MainActivity : MvpAppCompatActivity() {
 
     private var binding: ActivityMainBinding? = null
 
-//    @Inject
-//    lateinit var interactor: MainInteractor
-//
-//    @Inject
-//    lateinit var router: Router
-
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
 
     private var navigator: AppNavigator? = null
-
-//    private val presenter by moxyPresenter { MainPresenter(this, interactor) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +30,7 @@ class MainActivity : MvpAppCompatActivity() {
         setContentView(binding?.root)
         navigator = AppNavigator(this, binding?.container?.id!!)
 
-        Handler().postDelayed({
-            navigator?.applyCommands(arrayOf(Replace(Screens.openMainFragment())))
-        }, 2000)
+        navigator?.applyCommands(arrayOf(Replace(Screens.openMainFragment())))
 
         bottomNavigation()
 

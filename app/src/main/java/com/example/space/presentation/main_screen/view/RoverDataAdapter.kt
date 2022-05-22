@@ -30,8 +30,6 @@ class RoverDataAdapter(
             Glide.with(itemView)
                 .load(data.imgLink)
                 .placeholder(R.drawable.ic_loader)
-//                .override(170, 170)
-                .transform(RoundedCorners(20))
                 .centerCrop()
                 .into(ivPhoto)
             tvRoverName.text = data.roverName
