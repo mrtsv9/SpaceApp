@@ -18,14 +18,8 @@ import javax.inject.Singleton
 object NetworkModule {
 
     @Provides
-    fun providesBaseUrl() : String = "https://api.nasa.gov/mars-photos/api/v1/"
-
-    @Provides
     @Singleton
-    fun provideRetrofit(BASE_URL : String) : Retrofit = Retrofit.Builder()
-        .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl(BASE_URL)
-        .build()
+    fun provideRetrofit() : Retrofit = RetrofitInstance.getRetrofitInstance()
 
     @Provides
     @Singleton
