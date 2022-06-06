@@ -33,19 +33,6 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), MainView {
 
         presenter.fetchRoverData()
 
-        val backCallback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                Snackbar.make(
-                    binding.root,
-                    "Do you want to exit?", Snackbar.LENGTH_SHORT
-                )
-                    .setAction("Exit") {
-                        activity?.finish()
-                    }.show()
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backCallback)
-
     }
 
     override fun displayData(data: List<RoverDataItem>) {

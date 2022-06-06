@@ -1,6 +1,7 @@
 package com.example.domain.dto
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+
 
 data class RoverDataResponse(
     val photos: List<Photos>
@@ -8,13 +9,13 @@ data class RoverDataResponse(
 
 data class Photos(
     val camera: Camera,
-    @SerializedName("img_src")
+    @field:Json (name = "img_src")
     val imgLink: String,
     val rover: Rover
 )
 
 data class Camera(
-    @SerializedName("full_name")
+    @field:Json (name = "full_name")
     val fullName: String
 )
 

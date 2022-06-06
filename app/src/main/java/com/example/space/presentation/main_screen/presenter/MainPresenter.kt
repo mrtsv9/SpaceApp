@@ -1,23 +1,38 @@
 package com.example.space.presentation.main_screen.presenter
 
+import android.util.Log
+import android.widget.Toast
 import com.example.space.presentation.main_screen.interactor.MainInteractor
 import com.example.space.presentation.main_screen.model.toRoverDataItems
 import com.example.space.presentation.main_screen.view.MainView
-import kotlinx.coroutines.launch
+import io.reactivex.android.schedulers.AndroidSchedulers.mainThread
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import moxy.MvpPresenter
-import moxy.presenterScope
 
 class MainPresenter(
     private val mvpView: MainView,
     private val interactor: MainInteractor
-): MvpPresenter<MainView>() {
+) : MvpPresenter<MainView>() {
+
+    private var disposable = CompositeDisposable()
 
     fun fetchRoverData() {
-        presenterScope.launch {
-            val data = interactor.fetchRoverData()?.toRoverDataItems()
-            data?.let { mvpView.displayData(it) }
-        }
+        disposable.add(interactor.fetchRoverData()
+            .subscribeOn(Schedulers.io())
+            .observeOn(mainThread())
+            .subscribe({
+                mvpView.displayData(it.toRoverDataItems())
+            }, {
 
+            })
+        )
+    }
+
+    override fun onDestroy() {
+        disposable.clear()
+        super.onDestroy()
     }
 
 }

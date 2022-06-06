@@ -3,12 +3,14 @@ package com.example.space.presentation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import androidx.activity.OnBackPressedCallback
 import com.example.space.R
 import com.example.space.databinding.ActivityMainBinding
 import com.example.space.presentation.navigation.Screens
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Replace
 import com.github.terrakok.cicerone.androidx.AppNavigator
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import moxy.MvpAppCompatActivity
 import javax.inject.Inject
@@ -33,6 +35,19 @@ class MainActivity : MvpAppCompatActivity() {
         navigator?.applyCommands(arrayOf(Replace(Screens.openMainFragment())))
 
         bottomNavigation()
+
+        val backCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                Snackbar.make(
+                    binding!!.root,
+                    "Do you want to exit?", Snackbar.LENGTH_SHORT
+                )
+                    .setAction("Exit") {
+                        finish()
+                    }.show()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, backCallback)
 
     }
 

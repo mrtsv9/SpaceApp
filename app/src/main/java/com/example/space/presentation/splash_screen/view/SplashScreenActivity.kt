@@ -33,13 +33,12 @@ class SplashScreenActivity : MvpAppCompatActivity(), SplashView {
 
     private val navigator: Navigator = AppNavigator(this, -1)
 
-//    private val presenter by moxyPresenter { SplashPresenter(router) }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
+        @Suppress("DEPRECATION")
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
