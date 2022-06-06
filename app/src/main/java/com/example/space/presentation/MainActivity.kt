@@ -59,7 +59,7 @@ class MainActivity : MvpAppCompatActivity() {
                     navigator?.applyCommands(arrayOf(Replace(Screens.openMainFragment())))
                 }
                 R.id.mi_map -> {
-                    navigator?.applyCommands(arrayOf(Replace(Screens.openMapFragment())))
+                    navigator?.applyCommands(arrayOf(Replace(Screens.openDetailsFragment())))
                 }
             }
             true
