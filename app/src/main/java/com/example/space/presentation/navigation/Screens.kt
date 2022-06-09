@@ -14,7 +14,7 @@ object Screens {
 
     fun openMainFragment() = FragmentScreen { MainFragment() }
 
-    fun openDetailsFragment() = FragmentScreen { DetailsFragment() }
+    fun openDetailsFragment(itemImgLink: String) = FragmentScreen { DetailsFragment.getNewInstance(itemImgLink) }
 
     fun openMapFragment() = FragmentScreen { MapFragment() }
 
