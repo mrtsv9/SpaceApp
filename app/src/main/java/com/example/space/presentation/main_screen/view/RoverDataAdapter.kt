@@ -12,10 +12,14 @@ import com.example.space.presentation.main_screen.model.RoverDataItem
 
 
 class RoverDataAdapter(
-    private var photosList: List<RoverDataItem> = emptyList()
+    private var photosList: List<RoverDataItem> = emptyList(),
+    private val clickListener: (String) -> Unit
 ) : RecyclerView.Adapter<RoverDataAdapter.RoverDataViewHolder>() {
 
-    inner class RoverDataViewHolder(binding: ItemImageBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class RoverDataViewHolder(
+        binding: ItemImageBinding,
+        private val clickListener: (String) -> Unit
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         private val ivPhoto: AppCompatImageView = binding.ivPhoto
         private val tvRoverName: TextView = binding.tvRoverName
@@ -31,7 +35,7 @@ class RoverDataAdapter(
             tvRoverName.text = data.roverName
             tvCameraName.text = data.cameraName
             tvShowImage.setOnClickListener {
-
+                clickListener(data.imgLink)
             }
         }
     }
@@ -39,7 +43,7 @@ class RoverDataAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoverDataViewHolder {
         val binding = ItemImageBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
-        return RoverDataViewHolder(binding)
+        return RoverDataViewHolder(binding, clickListener)
     }
 
     override fun onBindViewHolder(holder: RoverDataViewHolder, position: Int) {

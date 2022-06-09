@@ -1,38 +1,46 @@
 package com.example.space.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import com.example.space.R
 import com.example.space.databinding.ActivityMainBinding
+import com.example.space.presentation.navigation.ChainHolder
+import com.example.space.presentation.navigation.ChainScreen
 import com.example.space.presentation.navigation.Screens
-import com.github.terrakok.cicerone.NavigatorHolder
-import com.github.terrakok.cicerone.Replace
+import com.github.terrakok.cicerone.*
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import moxy.MvpAppCompatActivity
+import java.lang.ref.WeakReference
+import java.util.ArrayList
 import javax.inject.Inject
 
 @Suppress("DEPRECATION")
 @AndroidEntryPoint
-class MainActivity : MvpAppCompatActivity() {
+class MainActivity : MvpAppCompatActivity(), ChainHolder {
 
     private var binding: ActivityMainBinding? = null
+
+    override val chain = ArrayList<WeakReference<Fragment>>()
 
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
 
-    private var navigator: AppNavigator? = null
+    private val navigator: Navigator = object : AppNavigator(this, R.id.container) {
+
+        override fun applyCommands(commands: Array<out Command>) {
+            super.applyCommands(commands)
+            fragmentManager.executePendingTransactions()
+            printScreensScheme()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
-        navigator = AppNavigator(this, binding?.container?.id!!)
-
-        navigator?.applyCommands(arrayOf(Replace(Screens.openMainFragment())))
 
         bottomNavigation()
 
@@ -49,6 +57,12 @@ class MainActivity : MvpAppCompatActivity() {
         }
         onBackPressedDispatcher.addCallback(this, backCallback)
 
+        if (savedInstanceState == null) {
+            navigator.applyCommands(arrayOf<Command>(Replace(Screens.openMainFragment())))
+        } else {
+            printScreensScheme()
+        }
+
     }
 
     private fun bottomNavigation() {
@@ -56,10 +70,10 @@ class MainActivity : MvpAppCompatActivity() {
 
             when (item.itemId) {
                 R.id.mi_home -> {
-                    navigator?.applyCommands(arrayOf(Replace(Screens.openMainFragment())))
+                    navigator.applyCommands(arrayOf(Replace(Screens.openMainFragment())))
                 }
                 R.id.mi_map -> {
-                    navigator?.applyCommands(arrayOf(Replace(Screens.openMapFragment())))
+                    navigator.applyCommands(arrayOf(Replace(Screens.openMapFragment())))
                 }
             }
             true
@@ -68,12 +82,30 @@ class MainActivity : MvpAppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        navigator?.let { navigatorHolder.setNavigator(it) }
+        navigatorHolder.setNavigator(navigator)
     }
 
     override fun onPause() {
         navigatorHolder.removeNavigator()
         super.onPause()
+    }
+
+    private fun printScreensScheme() {
+        val fragments = ArrayList<ChainScreen>()
+        for (fragmentReference in chain) {
+            val fragment = fragmentReference.get()
+            if (fragment != null && fragment is ChainScreen) {
+                fragments.add(fragment)
+            }
+        }
+        fragments.sortWith { f1, f2 ->
+            val t = f1.creationTime - f2.creationTime
+            if (t > 0) 1 else if (t < 0) -1 else 0
+        }
+        val keys = ArrayList<String>()
+        for (fragment in fragments) {
+            keys.add(fragment.name)
+        }
     }
 
 }
