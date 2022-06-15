@@ -2,7 +2,6 @@ package com.example.domain.dto
 
 import com.squareup.moshi.Json
 
-
 data class RoverDataResponse(
     val photos: List<Photos>
 )

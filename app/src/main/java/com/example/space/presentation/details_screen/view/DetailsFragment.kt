@@ -3,18 +3,19 @@ package com.example.space.presentation.details_screen.view
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.activity.OnBackPressedCallback
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.example.space.R
 import com.example.space.databinding.FragmentDetailsBinding
 import com.example.space.presentation.base.view.BaseFragment
 import com.example.space.presentation.details_screen.presenter.DetailsPresenter
-import com.example.space.presentation.main_screen.interactor.MainInteractor
-import com.example.space.presentation.main_screen.presenter.MainPresenter
 import com.github.terrakok.cicerone.Router
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import moxy.ktx.moxyPresenter
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class DetailsFragment : BaseFragment<FragmentDetailsBinding>(), DetailsView {
@@ -30,13 +31,25 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(), DetailsView {
     private val itemImgLink: String
         get() = requireArguments().getString(KEY).toString()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+    }
+
     override fun setup() {
+
         val backCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 presenter.onBackPressed()
             }
         }
         activity?.onBackPressedDispatcher?.addCallback(this, backCallback)
+    }
+
+    override fun onStop() {
+        activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        super.onStop()
     }
 
     override fun displayData() {
