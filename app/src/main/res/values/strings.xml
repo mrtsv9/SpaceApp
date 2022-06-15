@@ -3,4 +3,7 @@
     <string name="home">home</string>
     <string name="map">map</string>
     <string name="show_image">Show Image</string>
+    <string name="press_to_back">Нажмите кнопку, \n чтобы вернуться назад</string>
+    <string name="press_to_share">Нажмите кнопку,\nчтобы поделиться</string>
+    <string name="use_gestures">Используйте жесты,\nчтобы приблизить/отдалить</string>
 </resources>
