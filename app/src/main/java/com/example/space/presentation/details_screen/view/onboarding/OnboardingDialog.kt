@@ -3,13 +3,9 @@ package com.example.space.presentation.details_screen.view.onboarding
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.WindowManager
+import android.view.*
 import androidx.fragment.app.DialogFragment
 import com.example.space.databinding.FragmentOnboardingBinding
-import com.google.android.material.snackbar.Snackbar
 
 class OnboardingDialog : DialogFragment() {
 
@@ -34,9 +30,7 @@ class OnboardingDialog : DialogFragment() {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         binding?.root?.setOnClickListener {
-            Snackbar.make(binding!!.root, "Pressed", Snackbar.LENGTH_SHORT).setAction("Close?") {
-                dialog?.dismiss()
-            }.show()
+            dialog?.dismiss()
         }
     }
 

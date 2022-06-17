@@ -20,7 +20,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="52dp"
         app:layout_constraintEnd_toEndOf="@id/custom_view"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -35,7 +35,8 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_back"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/ic_share" />
+                app:layout_constraintTop_toTopOf="@+id/ic_share"
+                android:contentDescription="@string/description_back" />
 
             <ImageView
                 android:id="@+id/ic_share"
@@ -44,7 +45,8 @@
                 android:src="@drawable/ic_share"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/description_share" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

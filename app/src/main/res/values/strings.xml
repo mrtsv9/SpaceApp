@@ -6,4 +6,10 @@
     <string name="press_to_back">Нажмите кнопку, \n чтобы вернуться назад</string>
     <string name="press_to_share">Нажмите кнопку,\nчтобы поделиться</string>
     <string name="use_gestures">Используйте жесты,\nчтобы приблизить/отдалить</string>
+    <string name="description_back">Pressing this button will navigate you back</string>
+    <string name="description_share">Pressing this button you can share the image</string>
+    <string name="description_gestures">You can use gestures to scale and move the image</string>
+    <string name="sharing_subject">Sharing image from NASA API!</string>
+    <string name="sharing_text">Sending image from my Space application!</string>
+    <string name="sharing_via">Sharing via</string>
 </resources>
