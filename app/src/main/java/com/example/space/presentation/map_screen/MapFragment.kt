@@ -7,27 +7,37 @@ import androidx.activity.OnBackPressedCallback
 import com.example.space.R
 import com.example.space.databinding.FragmentMapBinding
 import com.example.space.presentation.base.view.BaseFragment
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.snackbar.Snackbar
 
-class MapFragment : BaseFragment<FragmentMapBinding>(), MapView {
+class MapFragment : BaseFragment<FragmentMapBinding>(), MapView, OnMapReadyCallback {
+
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentMapBinding
         get() = FragmentMapBinding::inflate
 
+    private lateinit var mMap: GoogleMap
+
+
     override fun setup() {
 
-        val backCallback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                Snackbar.make(
-                    binding.root,
-                    "Do you want to exit?", Snackbar.LENGTH_SHORT
-                )
-                    .setAction("Exit") {
-                        activity?.finish()
-                    }.show()
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, backCallback)
+        val mapFragment = childFragmentManager
+            .findFragmentById(R.id.mapFragment) as SupportMapFragment
+        mapFragment.getMapAsync(this)
 
+    }
+
+    override fun onMapReady(p0: GoogleMap) {
+        mMap = p0
+
+        // Add a marker in Sydney and move the camera
+        val sydney = LatLng(-34.0, 151.0)
+        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
 
 }

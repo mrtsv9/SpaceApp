@@ -12,4 +12,5 @@
     <string name="sharing_subject">Sharing image from NASA API!</string>
     <string name="sharing_text">Sending image from my Space application!</string>
     <string name="sharing_via">Sharing via</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>
