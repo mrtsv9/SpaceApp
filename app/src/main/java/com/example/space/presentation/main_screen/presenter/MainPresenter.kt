@@ -13,13 +13,13 @@ import moxy.MvpPresenter
 class MainPresenter(
     private val router: Router,
     private val mvpView: MainView,
-    private val interactor: MainRepository
+    private val repository: MainRepository
 ) : MvpPresenter<MainView>() {
 
     private var disposable = CompositeDisposable()
 
     fun fetchRoverData() {
-        disposable.add(interactor.fetchRoverData()
+        disposable.add(repository.fetchRoverData()
             .subscribeOn(Schedulers.io())
             .observeOn(mainThread())
             .subscribe({

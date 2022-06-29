@@ -2,26 +2,35 @@ package com.example.space.presentation.map_screen.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.space.R
 import com.example.space.databinding.FragmentMapBinding
 import com.example.space.presentation.base.view.BaseFragment
-import com.google.android.gms.maps.CameraUpdateFactory
+import com.example.space.presentation.map_screen.presenter.MapPresenter
+import com.example.space.presentation.map_screen.repository.MapRepository
+import com.example.space.presentation.map_screen.util.OnSwipeListener
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.Marker
+import dagger.hilt.android.AndroidEntryPoint
+import moxy.ktx.moxyPresenter
+import javax.inject.Inject
 
-class MapFragment : BaseFragment<FragmentMapBinding>(), MapView, OnMapReadyCallback,
-    GoogleMap.OnMapClickListener {
+@AndroidEntryPoint
+class MapFragment : BaseFragment<FragmentMapBinding>(), MapView, OnMapReadyCallback {
 
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentMapBinding
         get() = FragmentMapBinding::inflate
 
     private lateinit var map: GoogleMap
 
-    override fun setup() {
+    @Inject
+    lateinit var repository: MapRepository
 
+    private val presenter by moxyPresenter { MapPresenter(repository) }
+
+    override fun setup() {
         val mapFragment = childFragmentManager
             .findFragmentById(R.id.mapFragment) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -31,14 +40,28 @@ class MapFragment : BaseFragment<FragmentMapBinding>(), MapView, OnMapReadyCallb
     override fun onMapReady(p0: GoogleMap) {
         map = p0
 
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        map.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        map.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        map.clear()
+
+        val markerListFragment = MarkerListFragment(map)
+
+        binding.viewForSwipe.setOnTouchListener(object : OnSwipeListener(requireContext()) {
+            override fun onSwipeBottomToTop() {
+                super.onSwipeBottomToTop()
+                markerListFragment.show(childFragmentManager, "tag")
+            }
+        })
+
+        addMarkers()
+
+        map.setOnMapClickListener {
+            PositionDialog(map, it).show(childFragmentManager, "PositionDialog")
+        }
     }
 
-    override fun onMapClick(p0: LatLng) {
-        map.addMarker(MarkerOptions().position(p0).title("Title"))
+    private fun addMarkers() {
+        presenter.getAllMarkers().forEach { marker ->
+            map.addMarker(marker)
+        }
     }
 
 }
