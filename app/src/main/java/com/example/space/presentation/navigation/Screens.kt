@@ -4,7 +4,7 @@ import android.content.Intent
 import com.example.space.presentation.MainActivity
 import com.example.space.presentation.details_screen.view.DetailsFragment
 import com.example.space.presentation.main_screen.view.MainFragment
-import com.example.space.presentation.map_screen.MapFragment
+import com.example.space.presentation.map_screen.view.MapFragment
 import com.github.terrakok.cicerone.androidx.ActivityScreen
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 

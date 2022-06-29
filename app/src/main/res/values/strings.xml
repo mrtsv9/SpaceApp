@@ -12,4 +12,12 @@
     <string name="sharing_subject">Sharing image from NASA API!</string>
     <string name="sharing_text">Sending image from my Space application!</string>
     <string name="sharing_via">Sharing via</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="marker_name">Marker name</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="pull_down_to_hide">Pull down to hide</string>
+    <string name="longitude">Longitude:</string>
+    <string name="width">Width:</string>
+    <string name="button_to_delete_marker">Button to delete marker</string>
 </resources>

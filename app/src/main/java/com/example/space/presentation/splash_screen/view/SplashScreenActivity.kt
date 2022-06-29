@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
 import com.example.space.databinding.ActivitySplashBinding
+import com.example.space.presentation.main_screen.presenter.MainPresenter
 import com.example.space.presentation.navigation.Screens
 import com.example.space.presentation.splash_screen.presenter.SplashPresenter
 import com.github.terrakok.cicerone.*
@@ -33,6 +34,8 @@ class SplashScreenActivity : MvpAppCompatActivity(), SplashView {
 
     private val navigator: Navigator = AppNavigator(this, -1)
 
+    private val presenter by moxyPresenter { SplashPresenter(router) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
@@ -50,7 +53,7 @@ class SplashScreenActivity : MvpAppCompatActivity(), SplashView {
                 Snackbar.LENGTH_LONG
             ).show()
         } else {
-            navigator.applyCommands(arrayOf(Replace(Screens.openMainActivity())))
+            presenter.openMainActivity()
         }
 
     }

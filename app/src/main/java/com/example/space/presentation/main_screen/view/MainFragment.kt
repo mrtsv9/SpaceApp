@@ -1,9 +1,7 @@
 package com.example.space.presentation.main_screen.view
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.view.WindowManager
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.space.databinding.FragmentMainBinding
 import com.example.space.presentation.base.view.BaseFragment
@@ -25,14 +23,12 @@ class MainFragment : BaseFragment<FragmentMainBinding>(), MainView {
     lateinit var router: Router
 
     @Inject
-    lateinit var interactor: MainRepository
+    lateinit var repository: MainRepository
 
-    private val presenter by moxyPresenter { MainPresenter(router, this, interactor) }
+    private val presenter by moxyPresenter { MainPresenter(router, this, repository) }
 
     override fun setup() {
-
         presenter.fetchRoverData()
-
     }
 
     override fun displayData(data: List<RoverDataItem>) {

@@ -10,8 +10,7 @@ import javax.inject.Inject
 
 class SplashPresenter(private val router: Router): MvpPresenter<SplashView>() {
 
-    override fun onFirstViewAttach() {
-        super.onFirstViewAttach()
+    fun openMainActivity() {
         router.navigateTo(Screens.openMainActivity())
     }
 
