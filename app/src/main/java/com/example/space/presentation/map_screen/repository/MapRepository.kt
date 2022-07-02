@@ -12,7 +12,8 @@ class MapRepository {
     }
 
     fun removeMarker(marker: MarkerOptions) {
-        markerList.forEach { if (it.position == marker.position) markerList.remove(it) }
+        // TODO - fix the bug with java.util.ConcurrentModificationException
+        markerList.forEach { if (it.hashCode() == marker.hashCode()) markerList.remove(it) }
     }
 
     fun getAllMarkers(): MutableList<MarkerOptions> {

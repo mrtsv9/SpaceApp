@@ -1,6 +1,8 @@
 package com.example.space.presentation.map_screen.view
 
 import android.graphics.Color
+import android.graphics.LinearGradient
+import android.graphics.Shader
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -37,6 +39,15 @@ class PositionDialog(var map: GoogleMap, var latLng: LatLng) : DialogFragment() 
     override fun onStart() {
         super.onStart()
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        val paint = binding?.btnSave?.paint
+        val width = paint?.measureText(binding?.btnSave?.text?.toString())
+        val textShader: Shader = LinearGradient(136f, 0f, width!!, binding?.btnSave?.textSize!!, intArrayOf(
+            Color.parseColor("#C00F9E"),
+            Color.parseColor("#DB3259")), null, Shader.TileMode.REPEAT)
+        binding?.btnSave?.paint?.shader = textShader
+
+        binding?.btnCancel?.paint?.shader = textShader
 
         binding?.btnCancel?.setOnClickListener {
             dialog?.dismiss()
