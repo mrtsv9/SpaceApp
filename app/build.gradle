@@ -2,9 +2,9 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-android'
-    id 'androidx.navigation.safeargs'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -86,4 +86,11 @@ dependencies {
     implementation "com.github.moxy-community:moxy-material:$moxy_version"
     implementation "com.github.moxy-community:moxy-ktx:$moxy_version"
 
+    // Maps
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+
+}
+
+secrets {
+    defaultPropertiesFileName 'local.properties'
 }

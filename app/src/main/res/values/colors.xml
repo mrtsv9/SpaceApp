@@ -10,6 +10,8 @@
     <color name="color_primary">#040D16</color>
     <color name="btn_show_image">#C00F9E</color>
     <color name="rv_background">#1D1E1F</color>
+    <color name="text_color">#C4C4C4</color>
+    <color name="text_color_with_opacity">#40C4C4C4</color>
     <color name="transparent">@android:color/transparent</color>
     <color name="semi_transparent">#50C4C4C4</color>
 </resources>

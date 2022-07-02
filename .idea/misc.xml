@@ -4,20 +4,31 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/bg.xml" value="0.285" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/bg_gradient.xml" value="0.29" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/bg_landscape_btn.xml" value="0.29" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/bg_list_item.xml" value="0.29" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/bg_marker_list.xml" value="0.29" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/ic_back.xml" value="0.29" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/ic_gestures.xml" value="0.29" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/ic_home.xml" value="0.29" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/ic_map.xml" value="0.29" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/ic_map_landscape.xml" value="0.29" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/round_outline.xml" value="0.285" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout-land/item_image.xml" value="0.403125" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout-large/fragment_details.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout-v31/fragment_details.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout-v31/item_image.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout/activity_maps.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout/activity_splash.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout/fragment_details.xml" value="0.365625" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout/fragment_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout/fragment_map.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout/fragment_map.xml" value="0.5" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout/fragment_marker_list.xml" value="0.3541666666666667" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout/fragment_onboarding.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout/item_image.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout/item_marker.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/layout/position_dialog.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/menu/menu.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/xml/files_path.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/MartsevPC/AndroidStudioProjects/SpaceApp/app/src/main/res/drawable/bg.xml" value="0.2385" />
