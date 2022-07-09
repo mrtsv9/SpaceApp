@@ -8,18 +8,14 @@ import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
 import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import com.example.space.R
 import com.example.space.presentation.MainActivity
+import com.example.space.presentation.notifications.NotificationChannelUseCase.channelId
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
-const val channelId = "notification_channel"
-const val channelName = "com.example.space"
-
 @SuppressLint("MissingFirebaseInstanceTokenRefresh")
-@RequiresApi(Build.VERSION_CODES.M)
 class PushNotificationsService : FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
@@ -39,8 +35,8 @@ class PushNotificationsService : FirebaseMessagingService() {
 
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(R.mipmap.ic_launcher)
             .setSound(defaultSoundUri)
+            .setSmallIcon(R.drawable.ic_splash)
             .setContentTitle(title)
             .setContentText(message)
             .setAutoCancel(true)
@@ -50,11 +46,7 @@ class PushNotificationsService : FirebaseMessagingService() {
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(
-                channelId,
-                channelName,
-                NotificationManager.IMPORTANCE_HIGH
-            )
+            val channel = NotificationChannelUseCase.getChannel()!!
             notificationManager.createNotificationChannel(channel)
         }
         notificationManager.notify(0, notificationBuilder.build())

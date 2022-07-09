@@ -1,5 +1,7 @@
 package com.example.space.presentation
 
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
@@ -8,7 +10,11 @@ import com.example.space.databinding.ActivityMainBinding
 import com.example.space.presentation.navigation.ChainHolder
 import com.example.space.presentation.navigation.ChainScreen
 import com.example.space.presentation.navigation.Screens
-import com.github.terrakok.cicerone.*
+import com.example.space.presentation.notifications.NotificationsReceiver
+import com.github.terrakok.cicerone.Command
+import com.github.terrakok.cicerone.Navigator
+import com.github.terrakok.cicerone.NavigatorHolder
+import com.github.terrakok.cicerone.Replace
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,7 +23,6 @@ import java.lang.ref.WeakReference
 import java.util.ArrayList
 import javax.inject.Inject
 
-@Suppress("DEPRECATION")
 @AndroidEntryPoint
 class MainActivity : MvpAppCompatActivity(), ChainHolder {
 
@@ -61,6 +66,10 @@ class MainActivity : MvpAppCompatActivity(), ChainHolder {
             navigator.applyCommands(arrayOf<Command>(Replace(Screens.openMainFragment())))
         } else {
             printScreensScheme()
+        }
+
+        IntentFilter(Intent.ACTION_POWER_CONNECTED).also {
+            registerReceiver(NotificationsReceiver(), it)
         }
 
     }
