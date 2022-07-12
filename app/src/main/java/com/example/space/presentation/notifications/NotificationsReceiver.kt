@@ -30,6 +30,7 @@ class NotificationsReceiver : BroadcastReceiver() {
         val pendingIntent =
             PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
+
         val notificationBuilder = NotificationCompat.Builder(
             context!!,
             channelId
@@ -39,6 +40,7 @@ class NotificationsReceiver : BroadcastReceiver() {
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
             .setSmallIcon(R.drawable.ic_splash)
+            .addAction(R.drawable.ic_splash, "Explore", pendingIntent)
 
         val notificationManager =
             ContextWrapper(context).getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
