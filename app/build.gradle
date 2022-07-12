@@ -5,6 +5,7 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -12,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.space"
-        minSdk 21
+        minSdk 23
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -57,14 +58,9 @@ dependencies {
     // Navigation
     implementation "com.github.terrakok:cicerone:7.1"
 
-    // ViewModels And LiveData
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
-
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.13.0'
-    kapt 'com.github.bumptech.glide:compiler:4.12.0'
+    kapt 'com.github.bumptech.glide:compiler:4.13.0'
 
     // RxJava2
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
@@ -74,8 +70,8 @@ dependencies {
     implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
 
     // Dagger Hilt
-    implementation "com.google.dagger:hilt-android:2.38.1"
-    kapt "com.google.dagger:hilt-compiler:2.38.1"
+    implementation "com.google.dagger:hilt-android:2.42"
+    kapt "com.google.dagger:hilt-compiler:2.42"
 
     // Moxy For MVP
     def moxy_version = "2.2.2"
@@ -88,6 +84,11 @@ dependencies {
 
     // Maps
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
+
+    // Firebase Notifications
+    implementation 'com.google.firebase:firebase-messaging-ktx:23.0.6'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation platform('com.google.firebase:firebase-bom:30.1.0')
 
 }
 

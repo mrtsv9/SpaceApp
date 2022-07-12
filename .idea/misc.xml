@@ -3,14 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.29" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/bg.xml" value="0.285" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/bg_gradient.xml" value="0.29" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/bg_landscape_btn.xml" value="0.29" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/bg_list_item.xml" value="0.29" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/bg_marker_list.xml" value="0.29" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/ic_back.xml" value="0.29" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/ic_ellipse.xml" value="0.1195" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/ic_gestures.xml" value="0.29" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/ic_home.xml" value="0.29" />
+        <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/ic_launcher_background.xml" value="0.29" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/ic_map.xml" value="0.29" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/ic_map_landscape.xml" value="0.29" />
         <entry key="..\:/AndroidStudioProjects/Space/app/src/main/res/drawable/round_outline.xml" value="0.285" />
