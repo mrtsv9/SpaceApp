@@ -1,15 +1,18 @@
 package com.example.space.presentation
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.work.*
 import com.example.space.R
 import com.example.space.databinding.ActivityMainBinding
 import com.example.space.presentation.navigation.ChainHolder
 import com.example.space.presentation.navigation.ChainScreen
 import com.example.space.presentation.navigation.Screens
+import com.example.space.presentation.notifications.NotificationWorker
 import com.example.space.presentation.notifications.NotificationsReceiver
 import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Navigator
@@ -21,6 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import moxy.MvpAppCompatActivity
 import java.lang.ref.WeakReference
 import java.util.ArrayList
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -68,8 +72,25 @@ class MainActivity : MvpAppCompatActivity(), ChainHolder {
             printScreensScheme()
         }
 
-        IntentFilter(Intent.ACTION_POWER_CONNECTED).also {
-            registerReceiver(NotificationsReceiver(), it)
+//        IntentFilter(Intent.ACTION_POWER_CONNECTED).also {
+//            registerReceiver(NotificationsReceiver(), it)
+//        }
+
+        val constraints = Constraints.Builder()
+            .setRequiresCharging(true)
+            .build()
+
+        val notificationsWorker =
+            PeriodicWorkRequest.Builder(NotificationWorker::class.java, 15, TimeUnit.MINUTES)
+                .setConstraints(constraints)
+                .build()
+
+        WorkManager.getInstance(applicationContext).apply {
+            enqueueUniquePeriodicWork(
+                "notificationsWorkManager",
+                ExistingPeriodicWorkPolicy.REPLACE,
+                notificationsWorker
+            )
         }
 
     }
